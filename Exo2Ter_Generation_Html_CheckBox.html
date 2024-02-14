@@ -10,7 +10,7 @@
 
     <link rel="stylesheet" href="./css/style.css">
     <link rel="shortcut icon" href="./images/lezard.png" type="image/x-icon">
-    <title>Exo04</title>
+    <title>Exo02CheckBox</title>
 </head>
 
 <body>
@@ -48,17 +48,24 @@
 
     <!--fin barre de nav-->
 
-    <h1>Exercices TESTS</h1>
+    <h1>Exercice 2 Ter</h1>
 
-    <p>Pour tester des trucs<br>
+    <p>Ecrire une page qui générera un COMBOBOX sur la page.<br> Ce combo sera généré à partir de 2 tableaux.<br>
+        L’un contiendra la liste des valeurs (exemple : 1,2,3,4,…),<br>
+        l’autre contiendra la liste des chaines visibles dans le combo (exemple : Choix1,Choix2, choix3,…..)<br>
     </p>
+
+    <h2>Exercice 2 Bis : Generation_Html_Radio.html</h2>
+    <p>Idem exercice 2 mais en générant des radio bouton.</p>
+
+    <h2>Exercice 2 Ter : Generation_Html_CheckBox.html</h2>
+    <p>Idem exercice 2 mais en générant des checkbox.</p>
 
     <div class="trait"></div>
 
     <!--Début de l'exo-->
 
     <div id="zoneAffichage"></div>
-    <div id="zoneAffichage2"></div>
     <button id="btn">Générer</button>
 
 
@@ -75,35 +82,6 @@
         // Se déclenche lorsque TOUTE LA PAGE est chargée (Style, images etc..)
         window.addEventListener('load', (event) => {
             // Le code de PROGRAMME PRINCIPAL
-            let btn = document.querySelector("#btn");
-
-            btn.addEventListener("click",
-                (event) => {
-                    let zone1 = document.querySelector("#zoneAffichage");
-                    let zone2 = document.querySelector("#zoneAffichage2");
-                    let question = prompt("Votre nom :");
-                    let question2 = prompt("Votre prénom :");
-
-                    let saut_ligne = document.createElement("br");
-                    let titre = document.createElement("h2");
-
-                    zone1.textContent = "Nom : " + question;
-                    zone2.textContent = "Prénon : " + question2;
-
-                    titre.textContent = question;
-
-
-
-
-                    zone1.appendChild(titre);
-                    zone1.append(saut_ligne);
-                    zone2.appendChild(titre);
-                    zone2.append(saut_ligne);
-
-
-
-
-                }, false);
 
 
 

@@ -50,11 +50,16 @@
 
     <h1>Exercice 2</h1>
 
-    <p>Ecrire une page qui demandera (via l’instruction PROMPT) une adresse URL à l’utilisateur.<br>
-        Une fois l’adresse saisie, le script devra générer un lien hypertext vers cette URL.<br> Ce lien devra afficher
-        « vers la
-        page http://www.afpa.fr » si l’utilisateur a saisi cette URL.<br>
+    <p>Ecrire une page qui générera un COMBOBOX sur la page.<br> Ce combo sera généré à partir de 2 tableaux.<br>
+        L’un contiendra la liste des valeurs (exemple : 1,2,3,4,…),<br>
+        l’autre contiendra la liste des chaines visibles dans le combo (exemple : Choix1,Choix2, choix3,…..)<br>
     </p>
+
+    <h2> <a href="Exo2Bis_Generation_Html_Radio.html">Exercice 2 Bis : Generation_Html_Radio.html</a></h2>
+    <p>Idem exercice 2 mais en générant des radio bouton.</p>
+
+    <h2> <a href="Exo2Ter_Generation_Html_CheckBox.html">Exercice 2 Ter : Generation_Html_CheckBox.html</a></h2>
+    <p>Idem exercice 2 mais en générant des checkbox.</p>
 
     <div class="trait"></div>
 
@@ -77,9 +82,41 @@
         // Se déclenche lorsque TOUTE LA PAGE est chargée (Style, images etc..)
         window.addEventListener('load', (event) => {
             // Le code de PROGRAMME PRINCIPAL
+            let btn = document.querySelector("#btn");
+
+            btn.addEventListener("click",
+                (event) => {
+                    alert("coucou");
+                    let zone = document.querySelector("#zoneAffichage");
+
+                    let select = document.createElement("select");
+                    let option = document.createElement("option");
+
+                    let valeurs = [1, 2, 3];
+                    let chaines = ["Choix1", "Choix2", "Choix3"];
+
+                    option = chaines;
+
+                    // zone.appendChild(select);
+
+                    // valeurs.forEach(valeur => {
+                    //     let option = document.createElement("option");
+                    //     option.innerHTML = valeur;
+                    //     option.valeur = valeur;
+                    //     select.appendChild(option);
+                    //   });
+
+                    zone.appendChild(select);
+
+
+                    select.appendChild(option);
 
 
 
+
+
+
+                }, false);
 
         });
 
