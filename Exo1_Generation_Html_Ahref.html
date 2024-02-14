@@ -77,6 +77,26 @@
         // Se déclenche lorsque TOUTE LA PAGE est chargée (Style, images etc..)
         window.addEventListener('load', (event) => {
             // Le code de PROGRAMME PRINCIPAL
+            let btn = document.querySelector("#btn");
+
+            btn.addEventListener("click", () => {
+                let maDiv = document.querySelector("#zoneAffichage");
+                let code_a_generer = document.createElement("a");
+                let saut_ligne = document.createElement("br");
+
+                let question = prompt("Saisi une URL :");
+
+                code_a_generer.href = question;
+                code_a_generer.target = "_blank";
+                code_a_generer.textContent = "Vers la page : " + question;
+
+                maDiv.innerHTML = ""; //Efface le contenu de la div
+                maDiv.appendChild(code_a_generer);
+                maDiv.append(saut_ligne);
+
+
+
+            }, false);
 
 
 
