@@ -86,35 +86,23 @@
 
             btn.addEventListener("click",
                 (event) => {
-                    alert("coucou");
                     let zone = document.querySelector("#zoneAffichage");
 
                     let select = document.createElement("select");
                     let option = document.createElement("option");
+                    let value = document.createElement("value");
 
-                    let valeurs = [1, 2, 3];
-                    let chaines = ["Choix1", "Choix2", "Choix3"];
-
-                    option = chaines;
-
-                    // zone.appendChild(select);
-
-                    // valeurs.forEach(valeur => {
-                    //     let option = document.createElement("option");
-                    //     option.innerHTML = valeur;
-                    //     option.valeur = valeur;
-                    //     select.appendChild(option);
-                    //   });
+                    let valeurs = [1, 2, 3, 4, 5];
+                    let chaines = ["Choix1", "Choix2", "Choix3", "Choix4", "Choix5"];
 
                     zone.appendChild(select);
 
-
-                    select.appendChild(option);
-
-
-
-
-
+                    for (let i = 0; i < valeurs.length; i++) {
+                        let option = document.createElement("option");
+                        option.innerHTML = chaines[i];
+                        option.value = valeurs[i];
+                        select.appendChild(option);
+                    }
 
                 }, false);
 

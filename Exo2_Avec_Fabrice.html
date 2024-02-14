@@ -10,7 +10,7 @@
 
     <link rel="stylesheet" href="./css/style.css">
     <link rel="shortcut icon" href="./images/lezard.png" type="image/x-icon">
-    <title>Exo04</title>
+    <title>Exo02</title>
 </head>
 
 <body>
@@ -40,9 +40,6 @@
                         <li class="nav-item">
                             <a class="nav-link" href="Exo5.html">Exercice 5</a>
                         </li>
-                        <li>
-                            <a class="nav-link" href="Exo2_Avec_Fabrice.html">Exo2 Avec Fabrice</a>
-                        </li>
                     </ul>
                 </div>
             </div>
@@ -51,10 +48,18 @@
 
     <!--fin barre de nav-->
 
-    <h1>Exercices TESTS</h1>
+    <h1>Exercice 2 avec Fabrice</h1>
 
-    <p>Pour tester des trucs<br>
+    <p>Ecrire une page qui générera un COMBOBOX sur la page.<br> Ce combo sera généré à partir de 2 tableaux.<br>
+        L’un contiendra la liste des valeurs (exemple : 1,2,3,4,…),<br>
+        l’autre contiendra la liste des chaines visibles dans le combo (exemple : Choix1,Choix2, choix3,…..)<br>
     </p>
+
+    <h2> <a href="Exo2Bis_Generation_Html_Radio.html">Exercice 2 Bis : Generation_Html_Radio.html</a></h2>
+    <p>Idem exercice 2 mais en générant des radio bouton.</p>
+
+    <h2> <a href="Exo2Ter_Generation_Html_CheckBox.html">Exercice 2 Ter : Generation_Html_CheckBox.html</a></h2>
+    <p>Idem exercice 2 mais en générant des checkbox.</p>
 
     <div class="trait"></div>
 
@@ -70,6 +75,29 @@
     <script>
         "use strict"; // Oblige la déclaration des variables
         // Zone de déclaration des PROCEDURES ET FONCTIONS
+        function genererCombo(destination, valeurs, chaines) {
+            let zone = document.querySelector(destination);
+
+            let select = document.createElement("select");
+            let option = document.createElement("option");
+            let value = document.createElement("value");
+
+            // let valeurs = [1, 2, 3, 4, 5];
+            // let chaines = ["Choix1", "Choix2", "Choix3", "Choix4", "Choix5"];
+
+
+
+
+            zone.appendChild(select);
+            for (let i = 0; i < valeurs.length; i++) {
+                let option = document.createElement("option");
+                option.innerHTML = chaines[i];
+                option.value = valeurs[i];
+                select.appendChild(option);
+
+            }
+
+        }
 
         // Zone de déclaration des variables GLOBALES 
         // (celles du programme PRINCIPAL)
@@ -82,34 +110,49 @@
 
             btn.addEventListener("click",
                 (event) => {
-                    let zone1 = document.querySelector("#zoneAffichage");
-                    let zone2 = document.querySelector("#zoneAffichage2");
-                    let question = prompt("Votre nom :");
-                    let question2 = prompt("Votre prénom :");
-
-                    let saut_ligne = document.createElement("br");
-                    let titre = document.createElement("h2");
-
-                    zone1.textContent = "Nom : " + question;
-                    zone2.textContent = "Prénon : " + question2;
-
-                    titre.textContent = question;
+                    genererCombo("#zoneAffichage", [1, 2, 3, 4, 5], ["Choix1", "Choix2", "Choix3", "Choix4", "Choix5"]);
+                    genererCombo("#zoneAffichage2", [1, 2, 3], ["Choix1", "Choix2", "Choix3"]);
 
 
 
+                    // let zone = document.querySelector("#zoneAffichage");
 
-                    zone1.appendChild(titre);
-                    zone1.append(saut_ligne);
-                    zone2.appendChild(titre);
-                    zone2.append(saut_ligne);
+                    // let select = document.createElement("select");
+                    // let option = document.createElement("option");
+                    // let value = document.createElement("value");
+
+                    // let valeurs = [1, 2, 3, 4, 5];
+                    // let chaines = ["Choix1", "Choix2", "Choix3", "Choix4", "Choix5"];
+
+
+
+
+                    // zone.appendChild(select);
+                    // for (let i = 0; i < valeurs.length; i++) {
+                    //     let option = document.createElement("option");
+                    //     option.innerHTML = chaines[i];
+                    //     option.value = valeurs[i];
+                    //     select.appendChild(option);
+
+                    // }
+
+
+
+                    //option 2
+                    // let tablo = [[1, "Choix1"], [2, "Choix2"], [3, "Choix3"]];
+                    // zone.appendChild(select);
+
+                    // tablo.forEach(valeur => {
+                    //     let option = document.createElement("option");
+                    //     option.innerHTML = valeur[1];
+                    //     option.value = valeur[0];
+                    //     select.appendChild(option);
+                    // });
 
 
 
 
                 }, false);
-
-
-
 
         });
 
