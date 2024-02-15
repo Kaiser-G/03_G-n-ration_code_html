@@ -120,6 +120,31 @@
         "use strict"; // Oblige la déclaration des variables
         // Zone de déclaration des PROCEDURES ET FONCTIONS
 
+        function genererTab(destination, ligne, colonne) {
+            let zone = document.querySelector(destination);
+            // let tab = document.createElement("table");
+            // let thead = document.createElement("thead");
+            let tr = document.createElement("tr");//que pour les lignes
+            let th = document.createElement("th");//ligne 1 pour les titres en gras, colonne
+            let td = document.createElement("td");//pour les lignes suivantes dans un tr, colonne
+
+            let tab = document.createElement("table");
+            tab.setAttribute('border', "2px");
+
+
+            for (let index = 1; index < ligne; index++) {
+                let tr = document.createElement("tr");//que pour les lignes
+
+                for (let index = 1; index < colonne; index++) {
+                    let td = document.createElement("td");//pour les lignes suivantes dans un tr, colonne
+                    td.innerText = "colonne";
+                    tr.appendChild(td);
+                }
+                tab.appendChild(tr);
+            }
+            zone.appendChild(tab);
+        }
+
         // Zone de déclaration des variables GLOBALES 
         // (celles du programme PRINCIPAL)
 
@@ -127,6 +152,17 @@
         // Se déclenche lorsque TOUTE LA PAGE est chargée (Style, images etc..)
         window.addEventListener('load', (event) => {
             // Le code de PROGRAMME PRINCIPAL
+
+            let btn = document.querySelector("#btn");
+
+            btn.addEventListener("click",
+                (event) => {
+
+                    let tabligne = prompt("Combien de ligne");
+                    let tabcol = prompt("Combien de colonne");
+
+                    genererTab("#zoneAffichage", tabligne, tabcol);
+                }, false);
 
 
 
