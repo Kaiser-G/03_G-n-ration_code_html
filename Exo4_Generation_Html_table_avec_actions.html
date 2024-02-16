@@ -50,11 +50,72 @@
 
     <h1>Exercice 4</h1>
 
-    <p>Ecrire une page qui demandera (via l’instruction PROMPT) une adresse URL à l’utilisateur.<br>
-        Une fois l’adresse saisie, le script devra générer un lien hypertext vers cette URL.<br> Ce lien devra afficher
-        « vers la
-        page http://www.afpa.fr » si l’utilisateur a saisi cette URL.<br>
+    <p>Ecrire une page sur le modèle de l’exercice 3 en y ajoutant des boutons ACTIONS (Modifier et Supprimer) comme
+        ceci<br>
     </p>
+
+
+    <table border="2px">
+        <thead>
+            <tr>
+                <th>Entete1</th>
+                <th>Entete2</th>
+                <th>Entete3</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>Val11</td>
+                <td>Val12</td>
+                <td>Val13</td>
+                <td><button>Modifier</button><button>Supprimer</button></td>
+            </tr>
+            <tr>
+                <td>Val21</td>
+                <td>Val22</td>
+                <td>Val23</td>
+                <td><button>Modifier</button><button>Supprimer</button></td>
+            </tr>
+            <tr>
+                <td>Val31</td>
+                <td>Val32</td>
+                <td>Val33</td>
+                <td><button>Modifier</button><button>Supprimer</button></td>
+            </tr>
+            <tr>
+                <td>Val41</td>
+                <td>Val42</td>
+                <td>Val43</td>
+                <td><button>Modifier</button><button>Supprimer</button></td>
+            </tr>
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <th></th>
+                <td></td>
+            </tr>
+        </tfoot>
+    </table>
+    <br>
+    <img src="./images/tableau_bouton.png" alt=""><br>
+    <br>
+
+    <p>Remarque :<br>
+        • Chaque tous les boutons MODIFIER auront le même attribut CLASS qui servira à associer l’évènement CLICK.<br>
+        • Chaque tous les boutons SUPPRIMER auront le même attribut CLASS qui servira à associer l’évènement CLICK
+        (cette CLASS devra être différente de celle du bouton MODIFIER).<br>
+        • Chaque bouton Modifier et Supprimer aura un attribut Value qui sera égal au N° de la ligne. Lorsque l’on
+        cliquera sur un bouton modifier on devra voir apparaitre un message du type</p><br>
+
+    <img src="./images/alert.png" alt=""><br>
+    <br>
+
+    <p>• Si l’on a cliqué sur le bouton Modifier de la 2eme ligne.<br>
+        • Ce mecanisme doit fonctionner pour tous les boutons Modifier et Supprimer.</p><br>
+
 
     <div class="trait"></div>
 
@@ -64,11 +125,63 @@
     <button id="btn">Générer</button>
 
 
+    <!-- https://developer.mozilla.org/fr/docs/Web/API/Document_Object_Model/Traversing_an_HTML_table_with_JavaScript_and_DOM_Interfaces -->
+
+
     <!--Début du javascript-->
 
     <script>
         "use strict"; // Oblige la déclaration des variables
         // Zone de déclaration des PROCEDURES ET FONCTIONS
+
+        function genererTab(destination, ligne, colonne) {
+            let zone = document.querySelector(destination);
+            // let tab = document.createElement("table");
+
+            // let thead = document.createElement("thead"); un seul par tableau
+            //  let tr = document.createElement("tr");//que pour les lignes 
+            // let th = document.createElement("th");//ligne 1 pour les titres en gras, colonne
+
+            // let body = document.createElement("tbody");//un seul par tableau qui contient :tr > td
+            // let tr = document.createElement("tr");//que pour les lignes           
+            // let td = document.createElement("td");//pour les lignes suivantes dans un tr, colonne
+
+
+            //création du tableau
+            let tab = document.createElement("table");
+            tab.setAttribute('border', "2px");
+
+            //création du thead
+            let thead = document.createElement("thead");// un seul par tableau
+            let tr = document.createElement("tr");//que pour les lignes 
+            for (let i = 1; i <= colonne; i++) {
+                let th = document.createElement("th");//ligne 1 pour les titres en gras, colonne
+                th.innerText = "Entete" + i;
+                tr.appendChild(th);
+                thead.appendChild(tr);
+            }
+            tab.appendChild(thead);
+
+
+            //création du body
+            let body = document.createElement("tbody");//un seul par tableau qui contient :tr > td
+            tab.appendChild(body);
+
+
+            for (let index = 1; index <= ligne; index++) {
+                let tr = document.createElement("tr");//que pour les lignes
+
+                for (let j = 1; j <= colonne; j++) {
+                    let td = document.createElement("td");//pour les lignes suivantes dans un tr, colonne
+                    td.innerText = "L " + index + " C " + j;
+                    tr.appendChild(td);
+                }
+
+                body.appendChild(tr);
+            }
+            tab.appendChild(body);
+            zone.appendChild(tab);
+        }
 
         // Zone de déclaration des variables GLOBALES 
         // (celles du programme PRINCIPAL)
@@ -77,6 +190,17 @@
         // Se déclenche lorsque TOUTE LA PAGE est chargée (Style, images etc..)
         window.addEventListener('load', (event) => {
             // Le code de PROGRAMME PRINCIPAL
+
+            let btn = document.querySelector("#btn");
+
+            btn.addEventListener("click",
+                (event) => {
+
+                    let tabligne = prompt("Combien de ligne");
+                    let tabcol = prompt("Combien de colonne");
+
+                    genererTab("#zoneAffichage", tabligne, tabcol);
+                }, false);
 
 
 
