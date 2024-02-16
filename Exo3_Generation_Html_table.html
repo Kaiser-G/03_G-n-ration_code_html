@@ -56,10 +56,10 @@
         Si l’utilisateur a saisi 4 lignes et 3 colonnes, la page devra ressembler à ceci<br>
     </p>
 
-    <table>
+    <table border="2px">
         <thead>
             <tr>
-                <th>Entete1</th>
+                <th style="border: 2px solid black;">Entete1</th>
                 <th>Entete2</th>
                 <th>Entete3</th>
             </tr>
@@ -68,7 +68,7 @@
         <tbody>
             <tr>
                 <th>Val11</th>
-                <td>Val12</td>
+                <td style="border: 2px solid black;">Val12</td>
                 <td>Val13</td>
             </tr>
             <tr>
@@ -132,12 +132,17 @@
             tab.setAttribute('border', "2px");
 
 
-            for (let index = 1; index < ligne; index++) {
+            for (let index = 1; index <= ligne; index++) {
                 let tr = document.createElement("tr");//que pour les lignes
+                // tr.setAttribute('sytle', "border", "2px");
 
-                for (let index = 1; index < colonne; index++) {
+
+
+                for (let index = 1; index <= colonne; index++) {
                     let td = document.createElement("td");//pour les lignes suivantes dans un tr, colonne
-                    td.innerText = "colonne";
+
+                    td.innerText = "colonne" + colonne;
+                    // td.setAttribute('border', "2px");
                     tr.appendChild(td);
                 }
                 tab.appendChild(tr);
