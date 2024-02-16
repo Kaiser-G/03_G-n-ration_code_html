@@ -178,20 +178,28 @@
                     tr.appendChild(td);
                 }
 
+
                 //création des 2 boutons
+                let td = document.createElement("td");
                 let bouton = document.createElement("button");
-                bouton.innerText = "test";
+                bouton.innerText = "Modifier";
                 bouton.value = index;
-                tr.appendChild(bouton);
+                td.appendChild(bouton);
                 let bouton2 = document.createElement("button");
-                bouton2.innerText = "test2";
-                tr.appendChild(bouton2);
+                bouton2.innerText = "Supprimer";
+                bouton2.value = index;
+                td.appendChild(bouton2);
+                tr.appendChild(td);
 
                 // fonction pour rendre les boutons clickable
                 bouton.addEventListener("click",
-                    () => {
-                        alert("N° de ligne " + index);
+                    (event) => {
+                        alert("Click sur Modifier avec la valeur = " + event.target.value);
+                    }, false);
 
+                bouton2.addEventListener("click",
+                    (event) => {
+                        alert("Click sur Supprimer avec la valeur = " + event.target.value);
                     }, false);
 
                 body.appendChild(tr);

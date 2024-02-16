@@ -48,7 +48,7 @@
 
     <!--fin barre de nav-->
 
-    <h1>Exercice 4</h1>
+    <h1>Exercice 4 v2</h1>
 
     <p>Ecrire une page sur le modèle de l’exercice 3 en y ajoutant des boutons ACTIONS (Modifier et Supprimer) comme
         ceci<br>
@@ -191,7 +191,11 @@
                 bouton.addEventListener("click",
                     () => {
                         alert("N° de ligne " + index);
+                    }, false);
 
+                bouton2.addEventListener("click",
+                    () => {
+                        alert("N° de ligne " + index);
                     }, false);
 
                 body.appendChild(tr);
