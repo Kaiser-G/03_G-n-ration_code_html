@@ -48,7 +48,7 @@
 
     <!--fin barre de nav-->
 
-    <h1>Exercice 3</h1>
+    <h1>Exercice 3 V2</h1>
 
     <p>Ecrire une page qui génère automatiquement une TABLE sur la page.<br> Le script devra demander le nombre de
         lignes puis le
@@ -128,9 +128,9 @@
             //  let tr = document.createElement("tr");//que pour les lignes 
             // let th = document.createElement("th");//ligne 1 pour les titres en gras, colonne
 
-            let body = document.createElement("tbody");//un seul par tableau qui contient :tr > td
+            // let body = document.createElement("tbody");//un seul par tableau qui contient :tr > td
             // let tr = document.createElement("tr");//que pour les lignes           
-            let td = document.createElement("td");//pour les lignes suivantes dans un tr, colonne
+            // let td = document.createElement("td");//pour les lignes suivantes dans un tr, colonne
 
 
             //création du tableau
@@ -140,22 +140,36 @@
             //création du thead
             let thead = document.createElement("thead");// un seul par tableau
             let tr = document.createElement("tr");//que pour les lignes 
-            let th = document.createElement("th");//ligne 1 pour les titres en gras, colonne
+            for (let i = 1; i <= colonne; i++) {
+                let th = document.createElement("th");//ligne 1 pour les titres en gras, colonne
+                th.innerText = "Entete" + i;
+                tr.appendChild(th);
+                thead.appendChild(tr);
+            }
+            tab.appendChild(thead);
+
+
+            //création du body
+            let body = document.createElement("tbody");//un seul par tableau qui contient :tr > td
+            tab.appendChild(body);
 
 
             for (let index = 1; index <= ligne; index++) {
                 let tr = document.createElement("tr");//que pour les lignes
 
 
-                for (let index = 1; index <= colonne; index++) {
+                for (let j = 1; j <= colonne; j++) {
                     let td = document.createElement("td");//pour les lignes suivantes dans un tr, colonne
 
-                    td.innerText = "colonne" + colonne;
 
+                    td.innerText = "Ligne" + index + "colonne" + j;
                     tr.appendChild(td);
                 }
-                tab.appendChild(tr);
+
+                body.appendChild(tr);
             }
+            tab.appendChild(body);
+
             zone.appendChild(tab);
         }
 
