@@ -152,6 +152,7 @@
             let thead = document.createElement("thead");// un seul par tableau
             let tr = document.createElement("tr");//que pour les lignes 
 
+
             for (let i = 1; i <= colonne; i++) {
                 let th = document.createElement("th");//ligne 1 pour les titres en gras, colonne
                 th.innerText = "Entete" + i;
@@ -159,7 +160,7 @@
                 thead.appendChild(tr);
             }
             let th = document.createElement("th");
-            th.innerText = "actions";
+            th.innerText = "Actions";
             tr.appendChild(th);
             tab.appendChild(thead);
 
@@ -205,7 +206,6 @@
                 body.appendChild(tr);
             }
 
-            tab.appendChild(body);
             zone.appendChild(tab);
 
         }
